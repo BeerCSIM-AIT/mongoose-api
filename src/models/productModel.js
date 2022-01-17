@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define Product Docutment Structure
+// Define Product Document Structure
 const productSchema = new Schema({
     name: String,
     price: Number,

@@ -1,7 +1,7 @@
 require('dotenv').config({ path: './config.env' });
 const mongoose = require("mongoose");
 module.exports = function (app) {
-    mongoose.connect(process.env.ATLAS_URI, {
+    mongoose.connect(process.env.ATLAS_URI, {       //อ่านค่า ATLAS_URI ใน config.env
         useUnifiedTopology: true,
         useNewUrlParser: true,
         // put your db name

@@ -3,7 +3,7 @@ const Product = require('../models/productModel');
 exports.getProducts = async (req, res) => {
 
     //equal to db.products.find();
-    Product.find()
+    Product.find()      // equal to db.products.find();
         .exec((err, result) => {
             res.status(200).json({
                 msg: "OK",
@@ -13,7 +13,7 @@ exports.getProducts = async (req, res) => {
 };
 
 exports.getProductById = async (req, res) => {
-    Product.findById(req.params.id)
+    Product.findById(req.params.id)     //find product by id
         .exec((err, result) => {
             res.status(200).json({
                 msg: "OK",
@@ -24,7 +24,7 @@ exports.getProductById = async (req, res) => {
 
 exports.getProductByName = async (req, res) => {
     let productName = req.params.name;
-    Product.find({
+    Product.find({      //find product by a name field, using regular expression
             name: {
                 $regex: new RegExp(productName),
                 $options: 'i'
@@ -68,7 +68,7 @@ exports.editWholeProduct = async (req, res) => {
         price: req.body.price,
         unit_in_stock: req.body.unit_in_stock
     };
-    Product.findByIdAndUpdate(req.params.id, product)
+    Product.findByIdAndUpdate(req.params.id, product)       //find by id first, then update the returned document
         .exec((err, result) => {
             Product.findById(req.params.id)
                 .exec((err, result) => {
@@ -106,7 +106,7 @@ exports.editProduct = async (req, res) => {
 };
 
 exports.deleteProduct = async (req, res) => {
-    Product.findByIdAndDelete(req.params.id)
+    Product.findByIdAndDelete(req.params.id)        //find product by id, then delete
         .exec((err)=>{
             if(err){
                 res.status(500).json({

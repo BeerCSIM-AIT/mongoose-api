@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+//ดึงค่า config ใน db.js มาใช้ใน app
 require("./db")(app);
 
 app.use("/product", productRoute);
